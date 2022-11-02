@@ -3,9 +3,16 @@ import React, { useState } from 'react';
 function Form() {
 	const [nom, setNom] = useState('');
 	const [prenom, setPrenom] = useState('');
+	const [password, setPassword] = useState('');
 	const [Information, setInformation] = useState('');
+	const styleLabel = { fontWeight: 'bold', fontSize: '20px' };
 	function handleSubmit(e) {
 		e.preventDefault();
+		if (nom.trim() !== '' && prenom.trim() !== '' && password.length >= 4) {
+			setInformation(`tu t'appelle  : ${nom}  ${prenom} `);
+		} else {
+			setInformation('');
+		}
 		// alert(`Bonjour  ${nom}  ${prenom} `);
 	}
 	const CheckNom = function (event) {
@@ -14,18 +21,27 @@ function Form() {
 	const CheckPrenom = function (event) {
 		setPrenom(event.target.value);
 	};
-
-	const CheckInformation = function () {
-		setInformation(`tu t'appelle ? : ${nom}  ${prenom} `);
-		alert(Information);
+	const CheckPassword = function (event) {
+		setPassword(event.target.value);
 	};
 
+	// const CheckInformation = function () {
+	// 	// if (nom.trim() !== '' && prenom.trim() !== '') {
+	// 	// 	setInformation(`tu t'appelle  : ${nom}  ${prenom} `);
+	// 	// } else {
+	// 	// 	setInformation('');
+	// 	// }
+	// 	// alert(Information);
+	// };
+
 	return (
-		<form onSubmit={handleSubmit}>
+		<form onSubmit={(e) => handleSubmit(e)}>
 			<table>
 				<tr>
 					<td>
-						<label htmlFor="nom">Nom :</label>
+						<label style={styleLabel} htmlFor="nom">
+							Nom :
+						</label>
 					</td>
 					<td>
 						<input
@@ -33,14 +49,17 @@ function Form() {
 							type="text"
 							name="nom"
 							id="nom"
+							placeholder="Saisir le Nom ..."
 						/>
 					</td>
-					<td>{nom}</td>
+					<td></td>
 				</tr>
 
 				<tr>
 					<td>
-						<label htmlFor="prenom">prenom :</label>
+						<label style={styleLabel} htmlFor="prenom">
+							prenom :
+						</label>
 					</td>
 					<td>
 						<input
@@ -48,20 +67,43 @@ function Form() {
 							type="text"
 							name="prenom"
 							id="prenom"
+							placeholder="Saisir le Prenom ..."
 						/>
 					</td>
-					<td>{prenom}</td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>
+						<label style={styleLabel} htmlFor="Password">
+							Password :
+						</label>
+					</td>
+					<td>
+						<input
+							onChange={(e) => CheckPassword(e)}
+							type="password"
+							name="Password"
+							id="Password"
+							placeholder="Saisir le Password ..."
+						/>
+					</td>
+					<td></td>
+				</tr>
+				<tr>
+					<td colSpan={3} style={{ color: 'red' }}>
+						{password.length < 4
+							? 'Password doit contenir au mois 4 caracteres '
+							: ''}
+					</td>
 				</tr>
 				<tr>
 					<td colSpan={3}>
 						<button type="submit">Submit</button>
 					</td>
 				</tr>
+
 				<tr>
-					<td colSpan={3}>
-						<button onClick={(e) => CheckInformation(e)}>Lancer Infos</button>
-						{/* {({nom} === "") ? "" : `tu t'appelle ? : ${nom}  ${prenom}`} */}
-					</td>
+					<td colSpan={3}>{Information}</td>
 				</tr>
 			</table>
 		</form>
