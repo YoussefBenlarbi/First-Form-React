@@ -1,15 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import App from './App';
-import Form from './formButton'
+// import Form from './formButton';
 // import ComposentEvent from './ComposentEvent';
+import App from './App';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
-    <App />
-    {/* <ComposentEvent /> */}
+	<React.StrictMode>
+		<App />
+		{/* <ComposentEvent /> */}
 
-    <Form />
-  </React.StrictMode>
+		{/* <Form /> */}
+	</React.StrictMode>
 );

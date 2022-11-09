@@ -6,10 +6,12 @@ function Form() {
 	const [password, setPassword] = useState('');
 	const [Information, setInformation] = useState('');
 	const styleLabel = { fontWeight: 'bold', fontSize: '20px' };
+	const styleInput  = { color:"green", fontSize: '20px' };
 	function handleSubmit(e) {
 		e.preventDefault();
 		if (nom.trim() !== '' && prenom.trim() !== '' && password.length >= 4) {
-			setInformation(`tu t'appelle  : ${nom}  ${prenom} `);
+      
+			setInformation(`Tu t'appelle  : ${nom}  ${prenom} `);
 		} else {
 			setInformation('');
 		}
@@ -90,7 +92,7 @@ function Form() {
 					<td></td>
 				</tr>
 				<tr>
-					<td colSpan={3} style={{ color: 'red' }}>
+					<td colSpan={3} style={{ color: 'red', fontSize: '16px' }}>
 						{password.length < 4
 							? 'Password doit contenir au mois 4 caracteres '
 							: ''}
@@ -103,7 +105,7 @@ function Form() {
 				</tr>
 
 				<tr>
-					<td colSpan={3}>{Information}</td>
+					<td colSpan={3} style={styleInput}>{Information}</td>
 				</tr>
 			</table>
 		</form>
