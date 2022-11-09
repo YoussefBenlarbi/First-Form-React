@@ -4,7 +4,7 @@ function Form() {
 	const [nom, setNom] = useState('');
 	const [prenom, setPrenom] = useState('');
 	const [description, setDescription] = useState('');
-	const [nationalite, setNationalite] = useState('');
+	const [nationalite, setNationalite] = useState('rien');
 	const [sexe, setSexe] = useState('R');
 	const [lang, setLang] = useState([]);
 	const [information, setInformation] = useState('');
